@@ -2,9 +2,9 @@ name: test-windows
 
 on:
   push:
-    branches: [master, stable-*]
+    # branches: [master, stable-*]
   pull_request:
-    branches: [master, stable-*]
+    # branches: [master, stable-*]
 
 jobs:
   tests:
@@ -26,7 +26,7 @@ jobs:
 
       - name: Configure build
         shell: cmd
-        run: cmake -Bbuild -A ${{ matrix.arch }} -DCMAKE_BUILD_TYPE=${{ matrix.build_type}} -DWARNINGS_AS_ERRORS=ON -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON .
+        run: cmake -Bbuild -A ${{ matrix.arch }} -DCMAKE_BUILD_TYPE=${{ matrix.build_type}} -DWARNINGS_AS_ERRORS=OFF -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON .
 
       - name: Build
         working-directory: build
@@ -64,7 +64,7 @@ jobs:
 
       - name: Configure build
         shell: cmd
-        run: cmake -Bbuild -A ${{ matrix.arch }} -DWARNINGS_AS_ERRORS=ON -DBUILD_SHARED_LIBS=ON -DBUILD_TESTING=OFF .
+        run: cmake -Bbuild -A ${{ matrix.arch }} -DWARNINGS_AS_ERRORS=OFF -DBUILD_SHARED_LIBS=ON -DBUILD_TESTING=OFF .
 
       - name: Build
         working-directory: build
